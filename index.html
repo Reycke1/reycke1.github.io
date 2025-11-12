@@ -588,11 +588,13 @@
                                 <textarea class="form-control bg-secondary border-0 py-2 px-3" rows="5" placeholder="Message (name of plus 1, which events they will attend etc..)" required="required" id="message"></textarea>
                             </div>
                             <div>
-                                <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit">Submit</button>
+                                <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit">
+                                    <i class="fab fa-whatsapp mr-2"></i>Submit via WhatsApp
+                                </button>
                             </div>
                         </form>
                         <div class="mt-4">
-                            <p class="text-muted"><strong>Note:</strong> After clicking "Submit", a new tab will open with a pre-filled email in Gmail. Please review and send the email to complete your RSVP.</p>
+                            <p class="text-muted"><strong>Note:</strong> After clicking "Submit", WhatsApp will open with a pre-filled message. Please review and send the message to complete your RSVP.</p>
                         </div>
                     </div>
                 </div>
@@ -687,9 +689,8 @@
             const attending = document.getElementById('attending').value;
             const message = document.getElementById('message').value;
             
-            // Create the email subject and body
-            const subject = `Wedding RSVP from ${name}`;
-            const body = `Dear Madre and Hakeem,
+            // Create the WhatsApp message
+            const whatsappMessage = `Dear Madre and Hakeem,
 
 I would like to RSVP for your wedding with the following details:
 
@@ -705,21 +706,20 @@ Looking forward to celebrating with you!
 Best regards,
 ${name}`;
             
-            // Encode the subject and body for the Gmail URL
-            const encodedSubject = encodeURIComponent(subject);
-            const encodedBody = encodeURIComponent(body);
+            // Encode the message for the WhatsApp URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
             
-            // Create the Gmail URL
-            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=weddingmadre@gmail.com&su=${encodedSubject}&body=${encodedBody}`;
+            // Create the WhatsApp URL
+            const whatsappUrl = `https://wa.me/27817463220?text=${encodedMessage}`;
             
-            // Open Gmail in a new tab
-            window.open(gmailUrl, '_blank');
+            // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
             
             // Reset the form
             document.getElementById('rsvpForm').reset();
             
             // Show a confirmation message
-            alert('Thank you for your RSVP! A pre-filled email is now opening in a new tab. Please review and send it to complete your RSVP.');
+            alert('Thank you for your RSVP! A pre-filled message is now opening in WhatsApp. Please review and send it to complete your RSVP.');
         });
     </script>
 </body>
